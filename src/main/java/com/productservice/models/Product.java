@@ -17,3 +17,9 @@ public class Product extends  BaseModel{
     @ManyToOne
     private Category category;
 }
+
+/*
+    1          1
+ Product --- Category
+     M         1
+ */

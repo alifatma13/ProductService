@@ -6,6 +6,7 @@ import com.productservice.models.Product;
 import com.productservice.repositories.CategoryRepository;
 import com.productservice.repositories.PriceRepository;
 import com.productservice.repositories.ProductRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -59,6 +60,7 @@ public class ProductServiceApplication implements CommandLineRunner {
 
 
     @Override
+    @Transactional
     public void run(String... args) throws Exception {
 /*
 		Mentor mentor = new Mentor();
@@ -121,7 +123,7 @@ public class ProductServiceApplication implements CommandLineRunner {
         for(Product p : products){
             System.out.println(p.getTitle());
         }*/
-        Price price = new Price();
+/*        Price price = new Price();
         price.setCurrency("INR");
         price.setValue(100000);
         //Price savedPrice =  priceRepository.save(price);
@@ -137,12 +139,31 @@ public class ProductServiceApplication implements CommandLineRunner {
         product.setDescription("Best iPhone ever");
         product.setCategory(savedCategory);
         product.setPrice(price);
-        Product savedProduct = productRepository.save(product);
+        Product savedProduct = productRepository.save(product);*/
         //priceRepository.deleteById(UUID.fromString("3848bf42-a6da-4ac0-98a0-0580288be7dd"));
 
         //productRepository.delete(savedProduct);
 
        // productRepository.deleteById(UUID.fromString("37bb3f65-139c-46bd-a970-602e32570322"));
 
+/*
+        Category category = new Category();
+        category.setName("Apple Device");
+        Category savedCategory = categoryRepository.save(category);
+
+        Price price = new Price();
+        price.setValue(100000);
+        price.setCurrency("INR");
+*/
+
+
+
+        Optional<Category> optionalCategory = categoryRepository.findById(UUID.fromString("1e1b8ced-46a8-404c-a148-2d71445b03ff"));
+        Category category = optionalCategory.get();
+
+        List<Product> products = category.getProducts();
+        for (Product product : products) {
+            System.out.println(product.getTitle());
+        }
     }
 }

@@ -12,13 +12,11 @@ public class Product extends  BaseModel{
     private String title;
     private String description;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(nullable = false)
+    @OneToOne(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
     private Price price;
 
     private String image;
     @ManyToOne(optional = false)
-    @JoinColumn(nullable = false)
     private Category category;
 }
 

@@ -121,11 +121,10 @@ public class ProductServiceApplication implements CommandLineRunner {
         for(Product p : products){
             System.out.println(p.getTitle());
         }*/
-/*
         Price price = new Price();
         price.setCurrency("INR");
         price.setValue(100000);
-        Price savedPrice =  priceRepository.save(price);
+        //Price savedPrice =  priceRepository.save(price);
 
 
         Category category = new Category();
@@ -137,10 +136,13 @@ public class ProductServiceApplication implements CommandLineRunner {
         product.setTitle("iPhone 15 Pro");
         product.setDescription("Best iPhone ever");
         product.setCategory(savedCategory);
-        product.setPrice(savedPrice);
-        Product savedProduct = productRepository.save(product);*/
+        product.setPrice(price);
+        Product savedProduct = productRepository.save(product);
+        //priceRepository.deleteById(UUID.fromString("3848bf42-a6da-4ac0-98a0-0580288be7dd"));
 
-        priceRepository.deleteById(UUID.fromString("3848bf42-a6da-4ac0-98a0-0580288be7dd"));
+        //productRepository.delete(savedProduct);
+
+       // productRepository.deleteById(UUID.fromString("37bb3f65-139c-46bd-a970-602e32570322"));
 
     }
 }

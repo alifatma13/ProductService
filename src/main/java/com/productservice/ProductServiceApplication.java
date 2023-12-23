@@ -158,12 +158,18 @@ public class ProductServiceApplication implements CommandLineRunner {
 
 
 
-        Optional<Category> optionalCategory = categoryRepository.findById(UUID.fromString("1e1b8ced-46a8-404c-a148-2d71445b03ff"));
+/*        Optional<Category> optionalCategory = categoryRepository.findById(UUID.fromString("1e1b8ced-46a8-404c-a148-2d71445b03ff"));
         Category category = optionalCategory.get();
 
         List<Product> products = category.getProducts();
         for (Product product : products) {
             System.out.println(product.getTitle());
-        }
+        }*/
+
+        //select * from products
+        List<Product> products = productRepository.findAllByTitleAndDescription("iPhone 15 pro max", "Best iPhone ever.");
+
+        List<Product> products1 = productRepository.findAllByPrice_ValueLessThan(50000);
+        List<Product> products2 = productRepository.findAllByPrice_ValueBetween(29000, 50000);
     }
 }

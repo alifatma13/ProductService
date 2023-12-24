@@ -4,11 +4,13 @@ import com.productservice.ThirdPartyClient.fakestoreclient.FakeStoreClient;
 import com.productservice.dtos.FakeStoreProductDto;
 import com.productservice.dtos.GenericProductDto;
 import com.productservice.exceptions.ProductNotFoundException;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Primary
 @Service("fakeStoreProductService")
 public class FakeStoreProductService implements ProductService{
 

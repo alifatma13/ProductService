@@ -15,13 +15,14 @@ public class ProductController {
     private ProductService productService;
 
     // constructor Injection
-    ProductController (@Qualifier("fakeStoreProductService") ProductService productService){
+    ProductController (ProductService productService){
         this.productService = productService;
     }
 
     @GetMapping("/{id}")
     public GenericProductDto getProductByID(@PathVariable("id") Long id) throws ProductNotFoundException {
         // call the fake store productservice
+
         return productService.getProductByID(id);
     }
 

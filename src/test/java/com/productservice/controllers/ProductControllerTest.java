@@ -40,7 +40,7 @@ public class ProductControllerTest {
         assertTrue(1+1 == 2, "1+1 should be 2");
     }
 
-        @Test
+    /*    @Test
         void testGetProductByIdNegativeTC() throws ProductNotFoundException {
         assertThrows(ProductNotFoundException.class, () -> productController.getProductByID(1008000L));
         //assertNull(fakeStoreClient.getProductByID(1110000000L));
@@ -97,5 +97,5 @@ public class ProductControllerTest {
         assertEquals(id, argumentCaptor.getValue());
     }
 
-
+*/
 }

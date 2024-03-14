@@ -17,8 +17,8 @@ import java.util.UUID;
 
 @SpringBootApplication
 //public class ProductServiceApplication implements CommandLineRunner {
-public class ProductServiceApplication {
-/*    private final CategoryRepository categoryRepository;
+public class ProductServiceApplication implements CommandLineRunner {
+    private final CategoryRepository categoryRepository;
     private final ProductRepository productRepository;
     private final PriceRepository priceRepository;
 
@@ -28,7 +28,7 @@ public class ProductServiceApplication {
         this.categoryRepository = categoryRepository;
         this.productRepository = productRepository;
         this.priceRepository = priceRepository;
-    }*/
+    }
 
     /*	private MentorRepository mentorRepository;
         private StudentRepository studentRepository;
@@ -60,11 +60,11 @@ public class ProductServiceApplication {
     }
 
 
-/*    @Override
+    @Override
     @Transactional
     public void run(String... args) throws Exception {
-*//*
-		Mentor mentor = new Mentor();
+
+	/*	Mentor mentor = new Mentor();
 		mentor.setName("Fatma");
 		mentor.setAvgRating(4.6);
 		mentor.setEmail("fatma.ali@gmail.com");
@@ -87,8 +87,7 @@ public class ProductServiceApplication {
             System.out.println(user1.toString());
         }
 
-*//*
-		*//*Mentor mentor = new Mentor();
+        Mentor mentor = new Mentor();
 		mentor.setName("Fatma");
 		mentor.setAvgRating(4.6);
 		mentor.setEmail("fatma.ali@gmail.com");
@@ -103,34 +102,49 @@ public class ProductServiceApplication {
 		User user = new User();
 		user.setName("Arif");
 		user.setEmail("arif@gmail.com");
-		userRepository.save(user);*//*
+		userRepository.save(user);*/
 
-       *//* Category category = new Category();
+
+        /*Category category = new Category();
         category.setName("Apple Device");
-        Category savedCategory = categoryRepository.save(category);*//*
-       *//* Optional<Category> OptionalCategory =  categoryRepository.findById(UUID.fromString("da3cdb28-99d0-4dce-9766-a6188da27d94"));
-        if(OptionalCategory.isEmpty()){
-            throw  new Exception("Category was null");
+        Category savedCategory = categoryRepository.save(category);*/
+        Optional<Category> OptionalCategory = categoryRepository.findById(UUID.fromString("0bdd581d-6647-44e6-918f-c55dedc413c3"));
+        if (OptionalCategory.isEmpty()) {
+            throw new Exception("Category was null");
         }
-        Category category = OptionalCategory.get();
+        Category category1 = OptionalCategory.get();
+
+        Price price1 = new Price();
+        price1.setCurrency("INR");
+        price1.setValue(200000);
+        Price savedPrice1 = priceRepository.save(price1);
+
         Product product = new Product();
         product.setTitle("iPhone 15 Pro");
         product.setDescription("Best iPhone ever");
-        product.setCategory(category);
-        Product savedProduct = productRepository.save(product);*//*
+        product.setCategory(category1);
+        product.setPrice(price1);
+        Product savedProduct = productRepository.save(product);
 
         //Find all devices  with category - Apple devices
-     *//*   List<Product> products = category.getProducts();
+       /*List<Product> products = category.getProducts();
         for(Product p : products){
             System.out.println(p.getTitle());
-        }*//*
-*//*        Price price = new Price();
+        }*/
+        Price price = new Price();
         price.setCurrency("INR");
         price.setValue(100000);
-        //Price savedPrice =  priceRepository.save(price);
+        Price savedPrice = priceRepository.save(price);
+
+        Product product1 = new Product();
+        product1.setTitle("iPhone 14 Pro");
+        product1.setDescription("Best iPhone ever");
+        product1.setCategory(category1);
+        product1.setPrice(price);
+        Product savedProduct1 = productRepository.save(product1);
 
 
-        Category category = new Category();
+       /* Category category = new Category();
         category.setName("Apple Device");
         Category savedCategory = categoryRepository.save(category);
 
@@ -140,37 +154,34 @@ public class ProductServiceApplication {
         product.setDescription("Best iPhone ever");
         product.setCategory(savedCategory);
         product.setPrice(price);
-        Product savedProduct = productRepository.save(product);*//*
+        Product savedProduct = productRepository.save(product);*/
         //priceRepository.deleteById(UUID.fromString("3848bf42-a6da-4ac0-98a0-0580288be7dd"));
 
         //productRepository.delete(savedProduct);
 
-       // productRepository.deleteById(UUID.fromString("37bb3f65-139c-46bd-a970-602e32570322"));
+        // productRepository.deleteById(UUID.fromString("37bb3f65-139c-46bd-a970-602e32570322"));
 
-*//*
-        Category category = new Category();
+
+       /* Category category = new Category();
         category.setName("Apple Device");
         Category savedCategory = categoryRepository.save(category);
 
         Price price = new Price();
         price.setValue(100000);
         price.setCurrency("INR");
-*//*
 
 
-
-*//*        Optional<Category> optionalCategory = categoryRepository.findById(UUID.fromString("1e1b8ced-46a8-404c-a148-2d71445b03ff"));
+      Optional<Category> optionalCategory = categoryRepository.findById(UUID.fromString("1e1b8ced-46a8-404c-a148-2d71445b03ff"));
         Category category = optionalCategory.get();
 
         List<Product> products = category.getProducts();
         for (Product product : products) {
             System.out.println(product.getTitle());
-        }*//*
-
+        }
         //select * from products
         List<Product> products = productRepository.findAllByTitleAndDescription("iPhone 15 pro max", "Best iPhone ever.");
 
         List<Product> products1 = productRepository.findAllByPrice_ValueLessThan(50000);
-        List<Product> products2 = productRepository.findAllByPrice_ValueBetween(29000, 50000);
-    }*/
+        List<Product> products2 = productRepository.findAllByPrice_ValueBetween(29000, 50000);*/
+    }
 }

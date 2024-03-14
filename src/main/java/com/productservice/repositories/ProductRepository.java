@@ -2,6 +2,7 @@ package com.productservice.repositories;
 
 import com.productservice.models.Product;
 import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -14,6 +15,8 @@ public interface ProductRepository extends JpaRepository<Product, UUID> {
     List<Product> findAll(); // Get all the products from the Product table.
 
     List<Product> findAllByTitle(String title);
+
+    List<Product> findAllByTitleContaining(String title, Pageable pageable);
 
     List<Product> findAllByTitleAndDescription(String title, String desc);
 

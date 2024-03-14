@@ -22,6 +22,8 @@ public class Product extends  BaseModel{
     private String image;
     @ManyToOne(optional = false)
     private Category category;
+
+    private int inventoryCount;
 }
 
 /*
